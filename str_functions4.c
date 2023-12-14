@@ -30,7 +30,7 @@ char **stringtow(char *string, char *delimeter)
 		while (is_delimeter(string[n], delimeter))
 			n++;
 		l = 0;
-		while (!is_delim(string[n + l], delimeter) && string[n + l])
+		while (!is_delimeter(string[n + l], delimeter) && string[n + l])
 			l++;
 		str[m] = malloc((l + 1) * sizeof(char));
 		if (!str[m])
