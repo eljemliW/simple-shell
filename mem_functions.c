@@ -17,18 +17,18 @@ char *_memoryset(char *p, char byte, unsigned int number)
 }
 
 /**
- * free - frees a string of strings
+ * cfree - frees a string of strings
  * @str_string: string of strings
  */
-void free(char **str_string)
+void cfree(char **str_string)
 {
 	char **b = str_string;
 
 	if (!str_string)
 		return;
 	while (*str_string)
-		free(*str_string++);
-	free(b);
+		cfree(*str_string++);
+	cfree(b);
 }
 
 /**
@@ -46,7 +46,7 @@ void *_realoc(void *pointer, unsigned int old_sz, unsigned int new_sz)
 	if (!pointer)
 		return (malloc(new_sz));
 	if (!new_sz)
-		return (free(pointer), NULL);
+		return (cfree(pointer), NULL);
 	if (new_sz == old_sz)
 		return (pointer);
 
@@ -57,6 +57,7 @@ void *_realoc(void *pointer, unsigned int old_sz, unsigned int new_sz)
 	old_sz = old_sz < new_sz ? old_sz : new_sz;
 	while (old_sz--)
 		p[old_sz] = ((char *)pointer)[old_sz];
-	free(pointer);
+	cfree(pointer);
 	return (ptr);
 }
+
