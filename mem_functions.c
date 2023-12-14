@@ -50,7 +50,7 @@ void *_realoc(void *pointer, unsigned int old_sz, unsigned int new_sz)
 	if (new_sz == old_sz)
 		return (pointer);
 
-	p = malloc(new_sz);
+	ptr = malloc(new_sz);
 	if (!ptr)
 		return (NULL);
 

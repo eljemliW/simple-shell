@@ -35,7 +35,7 @@ int _erratoint(char *str)
  * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
  */
-void print_errormess(info_t *inf, char *errstr)
+void print_errormess(info *inf, char *errstr)
 {
 	_eputs(inf->filname);
 	_eputs(": ");
@@ -55,7 +55,7 @@ void print_errormess(info_t *inf, char *errstr)
  */
 int print_decimal(int input, int filed)
 {
-	int (*__putchar)(char) = _putchar;
+	int (*__putchar)(char) = _putcharacter;
 	int n, counter = 0;
 	unsigned int _abs_, curent;
 
@@ -99,11 +99,11 @@ char *convert_num(long int number, int b, int fl)
 	static char buff[50];
 	char sign = 0;
 	char *p;
-	unsigned long i = number;
+	unsigned long n = number;
 
 	if (!(fl & CONVERT_UNSIGNED) && number < 0)
 	{
-		i = -number;
+		n = -number;
 		sign = '-';
 
 	}
