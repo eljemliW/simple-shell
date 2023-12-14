@@ -27,7 +27,7 @@ char **stringtow(char *string, char *delimeter)
 		return (NULL);
 	for (n = 0, m = 0; m < numwords; m++)
 	{
-		while (is_delim(string[n], delimeter))
+		while (is_delimeter(string[n], delimeter))
 			n++;
 		l = 0;
 		while (!is_delim(string[n + l], delimeter) && string[n + l])
@@ -90,6 +90,5 @@ char **stringtow2(char *string, char delimeter)
 		str[m][p] = 0;
 	}
 	str[m] = NULL;
-	return (s);
+	return (str);
 }
-
