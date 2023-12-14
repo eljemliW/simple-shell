@@ -17,7 +17,7 @@ int _myexit(info *inf)
 		if (extcheck == -1)
 		{
 			inf->statuscmd = 2;
-			print_error(inf, "Illegal number: ");
+			print_errormess(inf, "Illegal number: ");
 			_eputs(inf->argarr[1]);
 			_eputchar('\n');
 			return (1);
@@ -60,7 +60,7 @@ int _mycd(info *inf)
 			_putcharacter('\n');
 			return (1);
 		}
-		_putstr(_getenv(inf, "OLDPWD=")), _putchar('\n');
+		_putstr(_getenv(inf, "OLDPWD=")), _putcharacter('\n');
 		chdir_ret = /* TODO: what should this be? */
 			chdir((direct = _getenv(inf, "OLDPWD=")) ? direct : "/");
 	}

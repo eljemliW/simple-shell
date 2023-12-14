@@ -31,7 +31,7 @@ int is_chain(info *inf, char *buffer, size_t *p)
 	}
 	else
 		return (0);
-	*p = j;
+	*p = m;
 	return (1);
 }
 
@@ -59,7 +59,7 @@ void check_chain(info *inf, char *buffer, size_t *adressp, size_t n, size_t leng
 	}
 	if (inf->comand_buf_type == CMD_OR)
 	{
-		if (!inf->statusn)
+		if (!inf->statuscmd)
 		{
 			buffer[n] = 0;
 			m = lenght;
@@ -88,7 +88,7 @@ int replace_alias(info *inf)
 			return (0);
 		free(inf->argarr[0]);
 		ptr = _stringchr(nod->string, '=');
-		if (!p)
+		if (!ptr)
 			return (0);
 		ptr = _stringdup(ptr + 1);
 		if (!ptr)
@@ -117,13 +117,13 @@ int replace_vars(info *inf)
 		if (!_stringcmp(inf->argarr[n], "$?"))
 		{
 			replace_string(&(inf->argarr[n]),
-				_stringdup(convert_number(inf->statusn, 10, 0)));
+				_stringdup(convert_num(inf->statusn, 10, 0)));
 			continue;
 		}
 		if (!_stringcmp(inf->argarr[n], "$$"))
 		{
 			replace_string(&(inf->argarr[n]),
-				_stringdup(convert_number(getpid(), 10, 0)));
+				_stringdup(convert_num(getpid(), 10, 0)));
 			continue;
 		}
 		nod = node_starts_with(inf->environ, &inf->argarr[n][1], '=');
