@@ -141,4 +141,3 @@ int renumber_history(info *inf)
 	}
 	return (inf->histcounter = n);
 }
-
