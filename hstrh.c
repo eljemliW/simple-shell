@@ -15,7 +15,7 @@ int hsh(info *inf, char **avector)
 	while (u != -1 && built_ret != -2)
 	{
 		clear_info(inf);
-		if (interac(inf))
+		if (interact(inf))
 			_putstr("$ ");
 		_eputchar(BUF_FLUSH);
 		u = get_input(inf);
@@ -26,7 +26,7 @@ int hsh(info *inf, char **avector)
 			if (built_ret == -1)
 				find_cmd(inf);
 		}
-		else if (interactive(inf))
+		else if (interact(inf))
 			_putcharacter('\n');
 		free_info(inf, 0);
 	}
@@ -71,7 +71,7 @@ int find_builtin(info *inf)
 		if (_stringcmp(inf->argarr[0], builtintable[n].type) == 0)
 		{
 			inf->line_counter++;
-			built_ret = builtintable[i].func(inf);
+			built_ret = builtintable[n].func(inf);
 			break;
 		}
 	return (built_ret);
@@ -101,7 +101,7 @@ void find_cmd(info *inf)
 		return;
 
 	pa = find_path(inf, _getenv(inf, "PATH="), inf->argarr[0]);
-	if (pa)
+	if (strpath)
 	{
 		inf->strpath = strpath;
 		fork_cmd(inf);
@@ -154,7 +154,7 @@ void fork_cmd(info *inf)
 		{
 			inf->statuscmd = WEXITSTATUS(inf->statuscmd);
 			if (inf->statuscmd == 126)
-				print_error(inf, "Permission denied\n");
+				print_errormess(inf, "Permission denied\n");
 		}
 	}
 }
