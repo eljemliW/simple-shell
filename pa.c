@@ -66,7 +66,7 @@ char *find_path(info *inf, char *pathstring, char *command)
 	{
 		if (!pathstring[n] || pathstring[n] == ':')
 		{
-			pa = dup_chars(pathstring, curr_position, i);
+			pa = dup_chars(pathstring, curr_position, n);
 			if (!*pa)
 				_stringcat(pa, command);
 			else

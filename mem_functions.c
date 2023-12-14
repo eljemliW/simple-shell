@@ -56,7 +56,7 @@ void *_realoc(void *pointer, unsigned int old_sz, unsigned int new_sz)
 
 	old_sz = old_sz < new_sz ? old_sz : new_sz;
 	while (old_sz--)
-		p[old_sz] = ((char *)pointer)[old_sz];
+		ptr[old_sz] = ((char *)pointer)[old_sz];
 	cfree(pointer);
 	return (ptr);
 }

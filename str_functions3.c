@@ -45,7 +45,7 @@ char *_stringncat(char *destination, char *source, int number)
 	n = 0;
 	m = 0;
 	while (destination[n] != '\0')
-		i++;
+		n++;
 	while (source[m] != '\0' && m < number)
 	{
 		destination[n] = source[m];
@@ -67,7 +67,7 @@ char *_stringchr(char *str, char car)
 {
 	do {
 		if (*str == car)
-			return (s);
+			return (str);
 	} while (*str++ != '\0');
 
 	return (NULL);

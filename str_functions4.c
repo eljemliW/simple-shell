@@ -17,7 +17,7 @@ char **stringtow(char *string, char *delimeter)
 	if (!delimeter)
 		delimeter = " ";
 	for (n = 0; string[n] != '\0'; n++)
-		if (!is_delim(string[n], delimeter) && (is_delim(string[n + 1], delimeter) || !string[n + 1]))
+		if (!is_delimeter(string[n], delimeter) && (is_delimeter(string[n + 1], delimeter) || !string[n + 1]))
 			numwords++;
 
 	if (numwords == 0)
@@ -67,7 +67,7 @@ char **stringtow2(char *string, char delimeter)
 			numwords++;
 	if (numwords == 0)
 		return (NULL);
-	s = malloc((1 + numwords) * sizeof(char *));
+	str = malloc((1 + numwords) * sizeof(char *));
 	if (!str)
 		return (NULL);
 	for (n = 0, m = 0; m < numwords; m++)
@@ -86,9 +86,10 @@ char **stringtow2(char *string, char delimeter)
 			return (NULL);
 		}
 		for (p = 0; p < l; p++)
-			str[m][p] = str[n++];
+			str[m][p] = string[n++];
 		str[m][p] = 0;
 	}
 	str[m] = NULL;
 	return (s);
 }
+
