@@ -166,7 +166,7 @@ int _myhelp(info *);
 int _myhistory(info *);
 int _myalias(info *);
 
-size_t get_input(info *);
+ssize_t get_input(info *);
 int _getline(info *, char **, size_t *);
 void sigintHandler(int);
 

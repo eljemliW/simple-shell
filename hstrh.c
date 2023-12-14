@@ -15,7 +15,7 @@ int hsh(info *inf, char **avector)
 	while (u != -1 && built_ret != -2)
 	{
 		clear_info(inf);
-		if (interactive(inf))
+		if (interac(inf))
 			_putstr("$ ");
 		_eputchar(BUF_FLUSH);
 		u = get_input(inf);
@@ -32,12 +32,12 @@ int hsh(info *inf, char **avector)
 	}
 	write_history(inf);
 	free_info(inf, 1);
-	if (!interactive(inf) && inf->statusn)
-		exit(inf->statusn);
+	if (!interact(inf) && inf->statuscmd)
+		exit(inf->statuscmd);
 	if (built_ret == -2)
 	{
 		if (inf->err_number == -1)
-			exit(inf->statusn);
+			exit(inf->statuscmd);
 		exit(inf->err_number);
 	}
 	return (built_ret);
@@ -68,7 +68,7 @@ int find_builtin(info *inf)
 	};
 
 	for (n = 0; builtintable[n].type; n++)
-		if (_stringcmp(inf->argarr[0], builtintable[i].type) == 0)
+		if (_stringcmp(inf->argarr[0], builtintable[n].type) == 0)
 		{
 			inf->line_counter++;
 			built_ret = builtintable[i].func(inf);
@@ -88,11 +88,11 @@ void find_cmd(info *inf)
 	char *pa = NULL;
 	int n, l;
 
-	inf->pa = inf->argarr[0];
-	if (inf->linecount_f == 1)
+	inf->strpath = inf->argarr[0];
+	if (inf->linecount_fl == 1)
 	{
 		inf->line_counter++;
-		inf->linecount_f = 0;
+		inf->linecount_fl = 0;
 	}
 	for (n = 0, l = 0; inf->argstr[n]; n++)
 		if (!is_delimeter(inf->argstr[n], " \t\n"))
@@ -103,7 +103,7 @@ void find_cmd(info *inf)
 	pa = find_path(inf, _getenv(inf, "PATH="), inf->argarr[0]);
 	if (pa)
 	{
-		inf->pa = pa;
+		inf->strpath = strpath;
 		fork_cmd(inf);
 	}
 	else
@@ -113,8 +113,8 @@ void find_cmd(info *inf)
 			fork_cmd(inf);
 		else if (*(inf->argstr) != '\n')
 		{
-			inf->statusn = 127;
-			print_error(inf, "not found\n");
+			inf->statuscmd = 127;
+			print_errormess(inf, "not found\n");
 		}
 	}
 }
@@ -149,11 +149,11 @@ void fork_cmd(info *inf)
 	}
 	else
 	{
-		wait(&(inf->statusn));
-		if (WIFEXITED(inf->statusn))
+		wait(&(inf->statuscmd));
+		if (WIFEXITED(inf->statuscmd))
 		{
-			inf->statusn = WEXITSTATUS(inf->statusn);
-			if (inf->statusn == 126)
+			inf->statuscmd = WEXITSTATUS(inf->statuscmd);
+			if (inf->statuscmd == 126)
 				print_error(inf, "Permission denied\n");
 		}
 	}

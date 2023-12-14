@@ -125,7 +125,7 @@ int _getline(info *inf, char **p, size_t *length)
 	ssize_t u = 0, str = 0;
 	char *ptr = NULL, *new_ptr = NULL, *car;
 
-	ptr = *ptr;
+	ptr = *p;
 	if (ptr && length)
 		str = *length;
 	if (n == len)
@@ -152,7 +152,7 @@ int _getline(info *inf, char **p, size_t *length)
 
 	if (length)
 		*length = str;
-	*ptr = ptr;
+	*p = ptr;
 	return (str);
 }
 
