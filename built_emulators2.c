@@ -73,8 +73,8 @@ int print_alias(list *nod)
 		for (b = nod->string; b <= ptr; b++)
 			_putcharacter(*b);
 		_putcharacter('\'');
-		_putstring(ptr + 1);
-		_putstring("'\n");
+		_putstr(ptr + 1);
+		_putstr("'\n");
 		return (0);
 	}
 	return (1);
