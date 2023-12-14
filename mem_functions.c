@@ -18,16 +18,16 @@ char *_memoryset(char *p, char byte, unsigned int number)
 
 /**
  * cfree - frees a string of strings
- * @str_string: string of strings
+ * @str: string of strings
  */
-void cfree(char **str_string)
+void cfree(char **str)
 {
-	char **b = str_string;
+	char **b = str;
 
-	if (!str_string)
+	if (!str)
 		return;
-	while (*str_string)
-		cfree(*str_string++);
+	while (*str)
+		cfree(*str++);
 	cfree(b);
 }
 

@@ -95,7 +95,7 @@ list *node_starts_with(list *nod, char *prefixstr, char car)
 		ptr = _begin_with(nod->string, prefixstr);
 		if (ptr && ((car == -1) || (*ptr == car)))
 			return (nod);
-		nod = nod->next;
+		nod = nod->nxt;
 	}
 	return (NULL);
 }

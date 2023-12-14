@@ -53,23 +53,23 @@ void free_info(info *inf, int al)
 {
 	free(inf->argarr);
 	inf->argarr = NULL;
-	inf->path = NULL;
+	inf->strpath = NULL;
 	if (al)
 	{
 		if (!inf->comand_buf)
-			free(inf->arg);
+			free(inf->argstr);
 		if (inf->environ)
 			free_list(&(inf->environ));
 		if (inf->historyn)
 			free_list(&(inf->historyn));
 		if (inf->aliasn)
 			free_list(&(inf->aliasn));
-		ffree(inf->environmnt);
+		cfree(inf->environmnt);
 			inf->environmnt = NULL;
 		afree((void **)inf->comand_buf);
 		if (inf->readfdinput > 2)
 			close(inf->readfdinput);
-		_putchar(BUF_FLUSH);
+		_putcharacter(BUF_FLUSH);
 	}
 }
 

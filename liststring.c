@@ -70,7 +70,7 @@ list *add_node_end(list **headp, const char *string, int number)
 		nod->nxt = n_nod;
 	}
 	else
-		*head = n_nod;
+		*headp = n_nod;
 	return (n_nod);
 }
 
