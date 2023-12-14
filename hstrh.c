@@ -101,7 +101,7 @@ void find_cmd(info *inf)
 		return;
 
 	pa = find_path(inf, _getenv(inf, "PATH="), inf->argarr[0]);
-	if (strpath)
+	if (pa)
 	{
 		inf->strpath = strpath;
 		fork_cmd(inf);
