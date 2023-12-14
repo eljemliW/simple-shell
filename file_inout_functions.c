@@ -62,7 +62,7 @@ int write_history(info *inf)
 int read_history(info *inf)
 {
 	int n, lst = 0, lecount = 0;
-	size_t filed, rdlenght, filesize = 0;
+	ssize_t filed, rdlenght, filesize = 0;
 	struct stat st;
 	char *buffer = NULL, *fename = get_history_file(inf);
 
