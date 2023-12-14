@@ -143,7 +143,7 @@ char **stringtow(char *, char *);
 char **stringtow2(char *, char);
 
 char *_memoryset(char *, char, unsigned int);
-void  cfree(char *);
+void  cfree(char **);
 void *_realoc(void *, unsigned int, unsigned int);
 
 int afree(void **);
