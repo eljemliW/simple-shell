@@ -51,7 +51,7 @@ void check_chain(info *inf, char *buffer, size_t *adressp, size_t n, size_t leng
 
 	if (inf->comand_buf_type == CMD_AND)
 	{
-		if (inf->statusn)
+		if (inf->statuscmd)
 		{
 			buffer[n] = 0;
 			m = lenght;
@@ -117,7 +117,7 @@ int replace_vars(info *inf)
 		if (!_stringcmp(inf->argarr[n], "$?"))
 		{
 			replace_string(&(inf->argarr[n]),
-				_stringdup(convert_num(inf->statusn, 10, 0)));
+				_stringdup(convert_num(inf->statuscmd, 10, 0)));
 			continue;
 		}
 		if (!_stringcmp(inf->argarr[n], "$$"))

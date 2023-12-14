@@ -6,7 +6,7 @@
  *          constant function prototype.
  * Return: Always 0
  */
-char **get_environ(info_t *inf)
+char **get_environ(info *inf)
 {
 	if (!inf->environmnt || inf->environ_changed)
 	{

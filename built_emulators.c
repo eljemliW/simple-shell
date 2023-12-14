@@ -68,7 +68,7 @@ int _mycd(info *inf)
 		chdir_ret = chdir(inf->argarr[1]);
 	if (chdir_ret == -1)
 	{
-		print_error(inf, "can't cd to ");
+		print_errormess(inf, "can't cd to ");
 		_eputs(inf->argarr[1]), _eputchar('\n');
 	}
 	else

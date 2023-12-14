@@ -34,10 +34,10 @@ int _eputchar(char car)
 	if (car == BUF_FLUSH || n >= WRITE_BUF_SIZE)
 	{
 		write(2, buffer, n);
-		i = 0;
+		n = 0;
 	}
 	if (car != BUF_FLUSH)
-		buffer[n++] = c;
+		buffer[n++] = car;
 	return (1);
 }
 
