@@ -27,8 +27,8 @@ void cfree(char **str)
 	if (!str)
 		return;
 	while (*str)
-		cfree(**str++);
-	cfree(b);
+		free(*str++);
+	free(b);
 }
 
 /**
